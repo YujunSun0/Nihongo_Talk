@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { useRouter } from "next/navigation";
 
 interface LoginModalProps {
   open: boolean;
@@ -16,6 +17,7 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   if (!open) return null;
 
@@ -116,7 +118,7 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
                   {emailMode === "login" && (
                     <>
                       <button className="w-full py-3 rounded-lg bg-yellow-400 text-black font-bold hover:bg-yellow-500 transition" onClick={handleLogin} disabled={loading}>로그인</button>
-                      <button className="w-full py-3 rounded-lg bg-neutral-800/80 text-white font-bold hover:bg-neutral-700 transition" onClick={() => setEmailMode("signup")} disabled={loading}>회원가입</button>
+                      <button className="w-full py-3 rounded-lg bg-neutral-800/80 text-white font-bold hover:bg-neutral-700 transition" onClick={() => { router.push("/signup"); onClose(); }} disabled={loading}>회원가입</button>
                       <button className="w-full py-2 text-xs text-gray-300 hover:underline" onClick={() => setEmailMode("reset")} disabled={loading}>비밀번호를 잊으셨나요?</button>
                     </>
                   )}
