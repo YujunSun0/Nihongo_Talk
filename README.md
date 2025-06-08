@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Product Requirements Document (PRD)
 
-## Getting Started
+## 📌 서비스명 (가제)
+**NihongoTalk** – AI 일본어 회화 파트너 웹앱
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 1. 🧭 제품 개요
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+일본어를 공부하는 사용자가, 실제 일본인처럼 말하는 AI 캐릭터와 자연스럽게 **음성 기반 대화**를 주고받으며 회화를 연습할 수 있는 웹앱입니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 2. 🎯 주요 목표
 
-## Learn More
+- 사용자의 학습 목적과 취향에 맞는 AI 캐릭터를 추천
+- 일본어 음성 입력/출력 기능을 통해 실전 회화 감각 강화
+- 일본어 문장에 대한 피드백 및 추천 표현 제공
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 3. 🔧 주요 기능 요약
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| 기능 | 설명 |
+|------|------|
+| ✅ 초반 설문 | 사용자 성향(학습 언어, 대화상대 성별/연령/말투 등)을 기반으로 캐릭터 추천 |
+| ✅ 캐릭터 추천 | 설문 결과 기반 프리셋 캐릭터 추천, 사용자 설정 변경 가능 |
+| ✅ 대화 시나리오 선택 | 카페 주문, 공항 체크인 등 실전 기반 상황 선택 |
+| ✅ 음성 입력 (STT) | 사용자가 마이크로 말하면 일본어로 텍스트 변환 |
+| ✅ AI 응답 (GPT) | 캐릭터 프롬프트를 반영해 자연스럽고 상황에 맞는 응답 생성 |
+| ✅ 음성 출력 (TTS) | AI 응답을 일본어 음성으로 들려줌 |
+| ✅ 대화 로그 및 피드백 | 채팅 UI에 대화 내용과 표현 피드백 제공 |
+| ❌ (MVP 제외) 사용자 계정, 복습 모드, 대화 저장 |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 4. 📋 사용자 플로우
+[앱 최초 접속]
+↓
+[간단 설문: 학습 언어, 대화상대 성별/연령/말투 선택]
+↓
+[AI 캐릭터 추천 결과 제시]
+↓
+[캐릭터 수정 화면 (옵션)]
+↓
+[대화 시나리오 선택]
+↓
+[음성 기반 회화 시작 (STT → GPT → TTS)]
+↓
+[피드백 표시 (선택)]
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 5. 🧩 설문 및 캐릭터 추천 상세
+
+### ✅ 설문 항목 예시
+
+| 항목 | 선택값 예시 |
+|------|-------------|
+| 학습 언어 | 일본어, 영어 (기획 확장) |
+| AI 성별 | 남성, 여성, 상관없음 |
+| 연령대 | 10대, 20대, 30대, 40대 이상 |
+| 말투 스타일 | 정중체(丁寧語), 반말(タメ語), 표준어, 사투리(간사이벤 등) |
+| 사용 목적 | 여행 회화, JLPT, 비즈니스 회화, 친구 사귀기 등 |
+
+### ✅ 캐릭터 추천 예시
+
+> 丁寧語를 쓰는 20대 여성 캐릭터를 추천합니다.  
+> 이름: 하루카 / 설정: 카페 알바생, 밝고 친절한 성격
+
+---
+
+## 6. 🎨 화면 구조 요약
+
+### 1. 설문 화면
+- 질문 & 선택 UI
+
+### 2. 캐릭터 제안 화면
+- 캐릭터 카드 UI + "다시 선택하기" 기능
+
+### 3. 메인 대화 화면
+- 대화 로그 / 음성 입력 / 음성 출력 UI
+
+### 4. 설정 화면
+- 캐릭터 속성 변경, 목소리 프리뷰 기능
+
+---
+
+## 7. 🧱 기술 스택
+
+| 분야 | 도구/라이브러리 |
+|------|------------------|
+| 프론트엔드 | Next.js, TypeScript, TailwindCSS |
+| 상태관리 | Zustand |
+| 음성 입력 | Web Speech API (STT) |
+| 음성 출력 | SpeechSynthesis API → (후에 ElevenLabs 등으로 확장 가능) |
+| AI 응답 | OpenAI GPT-4 API |
+| 캐릭터 프롬프트 시스템 | 커스텀 설정값을 기반으로 템플릿 생성 |
+| 백엔드 | Next.js API Route 또는 Firebase Functions |
+
+---
+
+## 8. ⚠️ MVP 범위 내 제한
+
+- ✅ 음성 기반 대화 기능과 캐릭터 추천은 필수
+- ❌ 로그인/저장 기능은 제외
+- ❌ 장기 학습 기능, 캐릭터 이미지, 애니메이션 등은 미포함
+
+---
+
+## ✅ 다음 단계 TODO
+
+- [ ] 설문 화면 UI 시안 제작
+- [ ] 캐릭터 추천 로직 정리 (조건 → 캐릭터 매핑)
+- [ ] GPT 시스템 프롬프트 템플릿 정의
+- [ ] Mic → GPT → 음성 응답까지 전체 흐름 프로토타입 구성

@@ -1,0 +1,6 @@
+@import "@fontsource/pretendard/variable.css";
+@import "@fontsource/inter/variable.css";
+
+body {
+  font-family: theme('fontFamily.sans');
+} 
