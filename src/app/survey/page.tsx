@@ -23,7 +23,18 @@ const surveyItems = [
   {
     key: "style",
     label: "어떤 말투 스타일을 원하시나요?",
-    options: ["정중체(丁寧語)", "반말(タメ語)", "표준어", "사투리(간사이벤 등)"],
+    options: [
+      "부드럽고 어른스러운 말투",
+      "활발하고 친근한 말투",
+      "쿨하고 직설적인 말투",
+      "귀엽고 발랄한 말투",
+      "밝고 상냥한 말투",
+      "조용하고 신중한 말투",
+      "차분하고 논리적인 말투",
+      "유머러스하고 자유로운 말투",
+      "도도하고 세련된 말투",
+      "장난기 많고 명랑한 말투"
+    ],
   },
   {
     key: "purpose",
@@ -69,7 +80,8 @@ export default function SurveyPage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -40 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="bg-white rounded-2xl shadow-xl px-8 py-12 flex flex-col items-center"
+            className="bg-white rounded-3xl shadow-2xl px-10 py-14 flex flex-col items-center mb-10 border-2 border-blue-200 relative
+                       max-h-[500px] overflow-y-auto"
           >
             <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-8 text-center leading-snug">
               {current.label}
